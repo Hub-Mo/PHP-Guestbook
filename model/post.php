@@ -3,15 +3,19 @@ declare(strict_types=1);
 
 class Post {
     private string $title;
-    private Date $date;
+    private string $date;
     private string $content;
-    private string $author;
+    private string $firstName;
+    private string $lastName;
 
-    public function __construct($title, $author, $content)
+    public function __construct($title, $firstName, $lastName, $content)
     {
+        date_default_timezone_set('UTC');
         $this->title = $title;
-        $this->author = $author;
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
         $this->content = $content;
+        $this->date = date('m/d/y');
     }
 
     /**
@@ -33,9 +37,25 @@ class Post {
     /**
      * @return string
      */
-    public function getAuthor(): string
+    public function getFirstName(): string
     {
-        return $this->author;
+        return $this->firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDate(): string
+    {
+        return $this->date;
     }
 
 }
