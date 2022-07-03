@@ -7,7 +7,7 @@
             <div class="card-body bg-light">
 
                 <div class = "container">
-                    <form id="contact-form" role="form">
+                    <form id="contact-form" method="post" role="form">
 
 
 
@@ -75,7 +75,7 @@
 <div class="row align-items-center">
     <div class="col-12 text-center">
         <form method="get">
-            <button class="btn btn-info" type="submit" name="page" value="HomePage">home Page</button>
+            <button class="btn btn-info" type="submit" name="page" value="HomePage">Check Posts</button>
         </form>
     </div>
 </div>

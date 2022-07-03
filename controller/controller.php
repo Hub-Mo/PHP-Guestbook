@@ -28,10 +28,9 @@ class controller{
                         include 'view/homePageView.php';
                         break;
                 }
-        if(isset($_GET['send'])){
+        if(isset($_POST['send'])){
                 $postLoader = new PostLoader();
                 $postLoader->savePost();
-                $postLoader->getPosts();
             }
 }
 
