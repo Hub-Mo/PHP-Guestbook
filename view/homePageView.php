@@ -55,13 +55,15 @@ $postLoader = new PostLoader();
         <?php foreach(array_reverse($postsArray) as $value): ?>
         <?php $i++;
         $content = $value['content'];
+        $firstName = $value['firstName'];
+        $lastName = $value['lastName'];
         $filteredContent = str_replace($badWords, $replaceBadWords, $content);
         str_replace($textEmojis, $emojis ,$filteredContent);
         ?>
         <div class="col-md-4">
             <div class="card p-3">
                 <div class="d-flex flex-row mb-3"><img src="https://picsum.photos/70" alt="random image">
-                    <div class="d-flex flex-column ml-2"><span><?= $value['title'] ?></span><span class="text-black-50"><?= $value['firstName']." ".$value['lastName'] ?></span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
+                    <div class="d-flex flex-column ml-2"><span><?= str_replace($badWords, $replaceBadWords, $value['title']) ?></span><span class="text-black-50"><?= str_replace($badWords, $replaceBadWords, $firstName)." ".str_replace($badWords, $replaceBadWords, $lastName) ?></span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
                 </div>
                 <h6> <?= str_replace($textEmojis, $emojis ,$filteredContent); ?></h6>
                 <div class="d-flex justify-content-between install mt-3"><span><?= $value['date'] ?></span></div>
