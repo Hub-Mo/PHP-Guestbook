@@ -9,10 +9,18 @@ $postLoader = new PostLoader();
         $postsArray = [];
     }
     ?>
-<form method='post'>
-    <input type='number' name='howMany' placeholder="how many posts do you want to see ?">
-    <button type='submit'>choose</button>
-</form>
+
+<div class="row align-items-center">
+    <div class="col-12 text-center">
+        <form method="get">
+            <button class="btn btn-info" type="submit" name="page" value="addMessage">add a message</button>
+        </form>
+        <form method='post'>
+            <input type='number' name='howMany' placeholder="how many posts do you want to see ?">
+            <button type='submit'>choose</button>
+        </form>
+    </div>
+</div>
 <?php
     $i = 0;
     $title = "";
@@ -30,33 +38,39 @@ $postLoader = new PostLoader();
     $badWords = ['fuck', 'shit', 'ass', 'bitch',];
     $replaceBadWords = ['f*', 'sh*', 'a*', 'b*'];
     foreach(array_reverse($postsArray) as $value){
-        $i++;
-        echo $title = "<h2>".$value['title']."</h2>";
-        echo $author = "<p>".$value['firstName'] ." ".$value['lastName']."</p>";
+//        $i++;
+//        echo $title = "<h2>".$value['title']."</h2>";
+//        echo $author = "<p>".$value['firstName'] ." ".$value['lastName']."</p>";
+//        $content = $value['content'];
+//        $filteredContent = str_replace($badWords, $replaceBadWords, $content);
+//        str_replace($textEmojis, $emojis ,$filteredContent);
+//        echo $date = $value['date'];
+//        if ($i >= $loops) break;
+}
+
+?>
+
+<div class="container mt-5">
+    <div class="row">
+        <?php foreach(array_reverse($postsArray) as $value): ?>
+        <?php $i++;
         $content = $value['content'];
         $filteredContent = str_replace($badWords, $replaceBadWords, $content);
-        echo str_replace($textEmojis, $emojis ,$filteredContent)."<br>";
-        echo $date = $value['date'];
-        if ($i >= $loops) break;
-}
-
-?>
-<?php
-/*echo "<div class='container' >";
-function createGrid(){
-    echo "<h1>".$title."</h1>";
-
-}
-echo "</div>";*/
-
-?>
-<div class="row align-items-center">
-    <div class="col-12 text-center">
-        <form method="get">
-            <button class="btn btn-info" type="submit" name="page" value="addMessage">add a message</button>
-            <p>&#128572</p>
-        </form>
+        str_replace($textEmojis, $emojis ,$filteredContent);
+        ?>
+        <div class="col-md-4">
+            <div class="card p-3">
+                <div class="d-flex flex-row mb-3"><img src="https://picsum.photos/70" alt="random image">
+                    <div class="d-flex flex-column ml-2"><span><?= $value['title'] ?></span><span class="text-black-50"><?= $value['firstName']." ".$value['lastName'] ?></span><span class="ratings"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></div>
+                </div>
+                <h6> <?= str_replace($textEmojis, $emojis ,$filteredContent); ?></h6>
+                <div class="d-flex justify-content-between install mt-3"><span><?= $value['date'] ?></span></div>
+            </div>
+        </div>
+        <?php if ($i >= $loops) break;
+        endforeach; ?>
     </div>
 </div>
+
 
 

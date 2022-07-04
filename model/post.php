@@ -15,7 +15,7 @@ class Post {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
         $this->content = $content;
-        $this->date = date('m/d/y');
+        $this->date = date('m/d/y - H:i');
     }
 
     /**
