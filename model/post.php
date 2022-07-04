@@ -11,10 +11,10 @@ class Post {
     public function __construct($title, $firstName, $lastName, $content)
     {
         date_default_timezone_set('UTC');
-        $this->title = $title;
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->content = $content;
+        $this->title = htmlspecialchars($title, ENT_QUOTES);
+        $this->firstName = htmlspecialchars($firstName, ENT_QUOTES);
+        $this->lastName = htmlspecialchars($lastName, ENT_QUOTES);
+        $this->content = htmlspecialchars($content, ENT_QUOTES);
         $this->date = date('m/d/y - H:i');
     }
 
